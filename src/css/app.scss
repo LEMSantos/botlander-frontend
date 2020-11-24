@@ -1,0 +1,71 @@
+// app global css in SCSS form
+$opacity-unit: 10%;
+$width-unit: 10%;
+
+@for $i from 1 through 10 {
+    .op-#{$i * 10} { opacity: $opacity-unit * $i; }
+}
+
+@for $i from 1 through 10 {
+    .w-#{$i * 10} { width: $width-unit * $i; }
+}
+
+@for $i from 1 through 10 {
+    .h-#{$i * 10} { height: $width-unit * $i; }
+}
+
+button {
+    min-width: 140px;
+}
+
+.reset-button {
+    min-width: 0px;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.display-block {
+    display: block;
+}
+
+.dashed-border {
+    border: 2px dashed black;
+}
+
+.border-primary {
+    border-color: $primary;
+}
+
+.default-bordered {
+    border: 1px solid black;
+}
+
+.object-fit {
+    object-fit: cover;
+}
+
+.reset-btn {
+    min-width: 0px;
+}
+
+.medium-dialog {
+    min-width: 500px;
+}
+
+.small-dialog {
+    min-width: 300px;
+}
+
+.large-dialog {
+    min-width: 700px;
+}
+
+.resize-none-textarea {
+    resize: none !important;
+}
