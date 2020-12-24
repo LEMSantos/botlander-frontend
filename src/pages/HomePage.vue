@@ -169,13 +169,26 @@ export default {
 
             this.postBot(payload)
                 .then(() => {
-                    this.showCreationDialog = false;
                     this.getAllBots();
                     // this.$router.push('/edit/id')
                 })
-                .catch(() => {})
+                .catch((error) => {
+                    let message = 'Houve um problema ao atualizar as informações';
+
+                    if (error.response.status === 401) {
+                        message = 'A senha informada não corresponde aos registros';
+                    }
+
+                    this.$q.notify({
+                        message,
+                        type: 'negative',
+                        position: 'top',
+                        timeout: 1000,
+                    });
+                })
                 .finally(() => {
                     this.loadingBotSubmmitCreation = false;
+                    this.showCreationDialog = false;
                 });
         },
 
@@ -186,10 +199,16 @@ export default {
                 .then(() => {
                     this.getAllBots();
                 })
-                .catch(() => {
+                .catch((error) => {
+                    let message = 'Houve um problema ao tentar deletar o bot.';
+
+                    if (error.response.status === 401) {
+                        message = 'A senha informada não corresponde aos registros';
+                    }
+
                     this.$q.notify({
                         type: 'negative',
-                        message: 'Houve um problema ao tentar deletar o bot.',
+                        message,
                     });
                 })
                 .finally(() => {

@@ -336,9 +336,15 @@ export default {
                             timeout: 1000,
                         });
                     })
-                    .catch(() => {
+                    .catch((error) => {
+                        let message = 'Houve um problema ao atualizar as informações';
+
+                        if (error.response.status === 401) {
+                            message = 'A senha informada não corresponde aos registros';
+                        }
+
                         this.$q.notify({
-                            message: 'Houve um problema ao atualizar as informações',
+                            message,
                             type: 'negative',
                             position: 'top',
                             timeout: 1000,
